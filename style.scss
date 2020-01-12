@@ -1,0 +1,151 @@
+@mixin planet($background, $origin, $animation) {
+    animation-duration: $animation;
+    background-color: $background;
+    height: 10px;
+    margin-top: -5px;
+    transform-origin: 0 $origin;
+    width: 10px;
+}
+@mixin palnet-orbit($size) {
+    height: $size;
+    width: $size;
+}
+* {
+    font-size: 6px;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #04071a;
+}
+#solar-system {
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 80vw;
+}
+#sun {
+    background-image: linear-gradient(to right,#FDB813,#cc9900);
+    border-radius: 50%;
+    box-shadow: 0px 0px 30px 2px rgba(207,207,26,0.75);
+    height: 30px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-15px,-15px);
+    width: 30px;
+}
+.orbit {
+    border: 2px solid #394057;
+    border-radius: 50%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.planet {
+    animation: rotate infinite linear;
+    border-radius: 50%;
+    left: 50%;
+    position: absolute;
+    top: 0;
+}
+.mercury-orbit {
+    @include palnet-orbit(10rem);
+}
+#mercury {
+    @include planet(#8e8e8e,calc(5rem + 5px),5s);
+}
+.venus-orbit {
+    @include palnet-orbit(20rem);
+}
+#venus {
+    @include planet(#8e8e8e,calc(10rem + 5px),10s);
+}
+.earth-orbit {
+    @include palnet-orbit(30rem);
+}
+#earth {
+    @include planet(#0088b2,calc(15rem + 5px),15s);
+}
+.moon {
+    animation: rotate 2s infinite linear;
+    background-color: #FFF;
+    height: 5px;
+    position: relative;
+    top: -9px;
+    transform-origin: 0 13px;
+    width: 5px;
+}
+.mars-orbit {
+    @include palnet-orbit(40rem);
+}
+#mars {
+    @include planet(#969900,calc(20rem + 5px),20s);
+}
+.stone {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    img {
+        animation: rotate 30s linear infinite;
+        height: 50rem;
+        width: 50rem;
+    }
+}
+.jupiter-orbit {
+    @include palnet-orbit(50rem);
+}
+#jupiter {
+    @include planet(#0db0b8,calc(25rem + 5px),25s);
+}
+.saturn-orbit {
+    @include palnet-orbit(60rem);
+}
+#saturn {
+    @include planet(#fff,calc(30rem + 5px),30s);
+    .spin {
+        border: 2px solid #90bb3c;
+        border-radius: 50%;
+        height: 13px;
+        left: -3px;
+        position: absolute;
+        top: -3px;
+        transform: skewY(50deg);
+        width: 10px;
+    }
+}
+.uranus-orbit {
+    @include palnet-orbit(70rem);
+}
+#uranus {
+    @include planet(#13856d,calc(35rem + 5px),35s);
+}
+.neptune-orbit {
+    @include palnet-orbit(80rem);
+}
+#neptune {
+    @include planet(#13856d,calc(40rem + 5px),40s);
+}
+.pluto-orbit {
+    @include palnet-orbit(90rem);
+}
+#pluto {
+    @include planet(#728018,calc(45rem + 5px),45s);
+}
+ul.items {
+    color: #63667b;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    li {
+        font-size: 4rem;
+    }
+}
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
